@@ -1,76 +1,222 @@
-/* For smaller screens: iPhones and similar devices */
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
+/* Global Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background: #000;
+  overflow-x: hidden;
+}
 
-  header h1 {
-    font-size: 2rem; /* Adjust title size */
-    margin-top: 30px;
-  }
+header {
+  text-align: center;
+  margin-top: 50px;
+}
 
-  .tagline {
-    font-size: 1rem;
-  }
+header h1 {
+  font-family: "Pacifico", cursive;
+  font-size: 3rem;
+  color: #f7c0c0;
+}
 
-  #timer {
-    flex-direction: column; /* Stack the timer on small screens */
-    gap: 10px;
-  }
+.tagline {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #ddd;
+}
 
-  #timer div {
-    font-size: 1.5rem; /* Adjust timer text size */
-  }
+/* Starry Background */
+.stars,
+.stars2,
+.stars3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent url("stars.png") repeat top center;
+  z-index: -1;
+  animation: move-stars 50s linear infinite;
+}
 
-  .gallery {
-    margin: 30px 0;
-  }
+.stars2 {
+  animation-duration: 100s;
+}
 
-  .photos {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller image grid */
-    gap: 10px;
-  }
+.stars3 {
+  animation-duration: 150s;
+}
 
-  .photos img {
-    border-radius: 5px; /* Slightly smaller radius */
+@keyframes move-stars {
+  from {
+    background-position: 0 0;
   }
-
-  .love-note {
-    margin: 20px auto;
-    max-width: 90%; /* Adjust content width */
-    padding: 10px;
-    font-size: 1rem;
-  }
-
-  #video-section {
-    margin: 20px auto;
-    padding: 15px;
-  }
-
-  #video-section h2 {
-    font-size: 1.2rem; /* Adjust video section heading */
-  }
-
-  video {
-    max-width: 100%;
-    height: auto; /* Ensure proper scaling */
+  to {
+    background-position: 10000px 10000px;
   }
 }
 
-/* For medium screens: Tablets and small desktops */
+/* Countdown Timer */
+.countdown {
+  text-align: center;
+  margin: 50px 0;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#timer div {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Gallery Section */
+.gallery {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.photos img {
+  display: none;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, filter 0.5s;
+  filter: blur(5px); /* Add blur effect */
+}
+
+.photos img.unblurred {
+  filter: blur(0); /* Remove blur when this class is added */
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.note {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 600px;
+  line-height: 1.8;
+  color: #f7c0c0;
+}
+
+/* Love Note Section */
+.love-note {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 600px;
+  line-height: 1.8;
+  color: #f7c0c0;
+}
+
+#video-section {
+  display: none;
+  text-align: center;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  max-width: 90%;
+}
+
+#video-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f7c0c0;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+video:hover {
+  transform: scale(1.05);
+}
+
+/* Animation for Countdown Timer */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#timer div {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Styling for the page background */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://source.unsplash.com/random/1920x1080?stars")
+    no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* For responsiveness */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 2.5rem;
+  #timer {
+    font-size: 1.5rem;
+    padding: 15px;
   }
 
   #timer div {
-    font-size: 1.8rem;
-  }
-
-  .love-note {
-    margin: 30px auto;
-    max-width: 80%;
-    font-size: 1.1rem;
+    font-size: 2rem;
   }
 
   #video-section h2 {
@@ -79,14 +225,5 @@
 
   video {
     max-width: 100%;
-    height: auto;
   }
-}
-
-/* Ensure modal images fit mobile screens */
-.modal-content {
-  width: 90%;
-  height: auto;
-  max-width: 100%;
-  max-height: 80%;
 }
