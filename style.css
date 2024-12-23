@@ -6,6 +6,7 @@ body {
   color: #fff;
   background: #000;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 header {
@@ -15,7 +16,7 @@ header {
 
 header h1 {
   font-family: "Pacifico", cursive;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #f7c0c0;
 }
 
@@ -34,7 +35,7 @@ header h1 {
   height: 100%;
   top: 0;
   left: 0;
-  background: transparent url("stars.png") repeat top center;
+  background: transparent url("nilyy/stars.jpg") repeat top center;
   z-index: -1;
   animation: move-stars 50s linear infinite;
 }
@@ -136,15 +137,7 @@ header h1 {
   color: #f7c0c0;
 }
 
-/* Love Note Section */
-.love-note {
-  text-align: center;
-  margin: 50px auto;
-  max-width: 600px;
-  line-height: 1.8;
-  color: #f7c0c0;
-}
-
+/* Video Section */
 #video-section {
   display: none;
   text-align: center;
@@ -157,7 +150,7 @@ header h1 {
 }
 
 #video-section h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #f7c0c0;
   margin-bottom: 20px;
@@ -210,20 +203,49 @@ body::after {
 
 /* For responsiveness */
 @media (max-width: 768px) {
-  #timer {
-    font-size: 1.5rem;
-    padding: 15px;
-  }
-
-  #timer div {
+  header h1 {
     font-size: 2rem;
   }
 
-  #video-section h2 {
+  #timer div {
     font-size: 1.5rem;
   }
 
-  video {
+  .photos img {
     max-width: 100%;
+    height: auto;
+  }
+
+  #video-section h2 {
+    font-size: 1.2rem;
+  }
+
+  video {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  #timer div {
+    font-size: 1.2rem;
+  }
+
+  .photos {
+    grid-template-columns: 1fr;
+  }
+
+  .note,
+  .love-note {
+    margin: 30px auto;
+    font-size: 1rem;
+  }
+
+  video {
+    width: 100%;
   }
 }
