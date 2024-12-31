@@ -88,7 +88,6 @@ header h1 {
 }
 
 .photos img {
-  display: none;
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -103,7 +102,6 @@ header h1 {
 
 /* Modal */
 .modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
