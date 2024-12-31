@@ -6,22 +6,22 @@ body {
   color: #fff;
   background: #000;
   overflow-x: hidden;
-  box-sizing: border-box;
 }
 
 header {
   text-align: center;
   margin-top: 50px;
+  padding: 0 10px; /* Ensure proper padding on smaller screens */
 }
 
 header h1 {
   font-family: "Pacifico", cursive;
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Adjusted for smaller screens */
   color: #f7c0c0;
 }
 
 .tagline {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Adjusted for smaller screens */
   margin-top: 10px;
   color: #ddd;
 }
@@ -35,7 +35,7 @@ header h1 {
   height: 100%;
   top: 0;
   left: 0;
-  background: transparent url("nilyy/stars.jpg") repeat top center;
+  background: transparent url("stars.png") repeat top center;
   z-index: -1;
   animation: move-stars 50s linear infinite;
 }
@@ -60,31 +60,35 @@ header h1 {
 /* Countdown Timer */
 .countdown {
   text-align: center;
-  margin: 50px 0;
+  margin: 50px 20px; /* Added side margin for smaller screens */
 }
 
 #timer {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px; /* Reduced gap for smaller screens */
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
 }
 
 #timer div {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Adjusted for smaller screens */
   text-align: center;
 }
 
 /* Gallery Section */
 .gallery {
   text-align: center;
-  margin: 50px 0;
+  margin: 50px 20px; /* Adjusted margin */
 }
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 0 20px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(100px, 1fr)
+  ); /* Reduced min size */
+  gap: 10px; /* Reduced gap */
+  padding: 0 10px;
 }
 
 .photos img {
@@ -93,15 +97,41 @@ header h1 {
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s, filter 0.5s;
-  filter: blur(5px); /* Add blur effect */
 }
 
-.photos img.unblurred {
-  filter: blur(0); /* Remove blur when this class is added */
+#video-section {
+  text-align: center;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 15px; /* Adjusted padding */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  max-width: 95%; /* Adjusted for smaller screens */
+}
+
+#video-section h2 {
+  font-size: 1.8rem; /* Adjusted font size */
+  font-weight: 700;
+  color: #f7c0c0;
+  margin-bottom: 15px; /* Adjusted margin */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+video {
+  width: 100%;
+  max-width: 700px; /* Reduced max width */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+video:hover {
+  transform: scale(1.05);
 }
 
 /* Modal */
 .modal {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -127,123 +157,42 @@ header h1 {
   cursor: pointer;
 }
 
-.note {
+/* Love Note Section */
+.love-note {
   text-align: center;
   margin: 50px auto;
-  max-width: 600px;
+  max-width: 90%; /* Adjusted width */
+  padding: 0 10px; /* Added padding for smaller screens */
   line-height: 1.8;
   color: #f7c0c0;
 }
 
-/* Video Section */
-#video-section {
-  display: none;
-  text-align: center;
-  margin-top: 30px;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  max-width: 90%;
-}
-
-#video-section h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #f7c0c0;
-  margin-bottom: 20px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-video {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease-in-out;
-}
-
-video:hover {
-  transform: scale(1.05);
-}
-
-/* Animation for Countdown Timer */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-#timer div {
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* Styling for the page background */
-body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("https://source.unsplash.com/random/1920x1080?stars")
-    no-repeat center center fixed;
-  background-size: cover;
-  opacity: 0.5;
-  z-index: -1;
-}
-
-/* For responsiveness */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   header h1 {
     font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
   }
 
   #timer div {
     font-size: 1.5rem;
   }
 
-  .photos img {
-    max-width: 100%;
-    height: auto;
-  }
-
   #video-section h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   video {
-    width: 100%;
     max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  #timer div {
-    font-size: 1.2rem;
   }
 
   .photos {
-    grid-template-columns: 1fr;
-  }
-
-  .note,
-  .love-note {
-    margin: 30px auto;
-    font-size: 1rem;
-  }
-
-  video {
-    width: 100%;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(80px, 1fr)
+    ); /* Smaller images */
   }
 }
