@@ -1,21 +1,12 @@
 // Countdown Timer
 const targetDate = new Date("2025-01-01T00:00:00");
-const today = new Date();
-const galleryStartDate = new Date(
-  today.getFullYear(),
-  today.getMonth(),
-  today.getDate() + 1,
-  0,
-  0,
-  0
-); // Tomorrow 12AM
-
 const timerElements = {
   days: document.getElementById("days"),
   hours: document.getElementById("hours"),
   minutes: document.getElementById("minutes"),
   seconds: document.getElementById("seconds"),
 };
+const images = document.querySelectorAll(".photos img");
 
 function updateCountdown() {
   const now = new Date();
@@ -31,3 +22,35 @@ function updateCountdown() {
   timerElements.minutes.textContent = minutes.toString().padStart(2, "0");
   timerElements.seconds.textContent = seconds.toString().padStart(2, "0");
 
+  // Handle unblurring images
+  if (days <= 7) {
+    const totalImages = images.length;
+    const imagesToUnblur = totalImages - (7 - days); // Images to unblur based on days left
+    images.forEach((img, index) => {
+      if (index < imagesToUnblur) {
+        img.classList.add("unblurred");
+      } else {
+        img.classList.remove("unblurred");
+      }
+    });
+  }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Modal for Enlarged Images
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const closeModal = document.getElementById("close");
+
+document.querySelectorAll(".photos img").forEach((img) => {
+  img.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  });
+});
+
+closeModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
